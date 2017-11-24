@@ -57,4 +57,6 @@
       (print-body req-body)
       (print ":: ")
       (print-body (:body response))
-      (println))))
+      (println)
+
+      response)))
