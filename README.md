@@ -2,9 +2,30 @@
 
 A clojure library for quick and dirty Ring server logging, intended for development.
 
+
 ## Usage
 
-FIXME
+Add the latest version to your `project.clj`:
+
+[![Clojars Project](http://clojars.org/bananaoomarang/ring-debug-logging/latest-version.svg)](http://clojars.org/bananaoomarang/ring-debug-logging)
+
+Require it:
+
+```
+[ring-debug-logging.core :refer [wrap-with-logger]]
+```
+
+And add it to your ring middlewares:
+
+```
+(def app
+  (-> app-routes
+      (wrap-json-response)
+      (wrap-json-body { :keywords? true })
+      (wrap-cors #".*")
+      (wrap-defaults api-defaults)
+      (wrap-with-logger)))
+```
 
 ## License
 

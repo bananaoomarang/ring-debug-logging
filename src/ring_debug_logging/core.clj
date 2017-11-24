@@ -1,6 +1,6 @@
 (ns ring-debug-logging.core
   (:require
-   [io.aviso.ansi :refer :all])
+   [io.aviso.ansi :refer :all]))
 
 (defn- get-req-method [request]
   (-> (:request-method request)
@@ -45,6 +45,16 @@
      (cyan "[no body]")
      (bold-white body)) ""))
 
-(defn wrap-with-json-logger [handler]
+(defn wrap-with-logger [handler]
   (fn [request]
-    (let [req-body   (get-req-body! request)
+    (let [req-body (get-req-body! request)
+          req-orig (if (empty? req-body)
+                     request
+                     (refill-req-with-body request req-body))
+          response (handler req-orig)]
+      (print-res-status response)
+      (print-req-method request (:status response))
+      (print-body req-body)
+      (print ":: ")
+      (print-body (:body response))
+      (println))))
