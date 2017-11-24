@@ -23,8 +23,6 @@
     :else red))
 
 (defn- print-res-status [{:keys [status] :as response}]
-  (println status)
-  (println (< status 500))
   (print
    ((get-status-color status) status) ""))
 
