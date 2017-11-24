@@ -37,6 +37,9 @@
          (color)
          (bold)) "")))
 
+(defn- print-req-path [{:keys [uri] :as request}]
+  (print (bold-cyan uri) ""))
+
 (defn- print-body [body]
   (print
    (if (empty? body)
@@ -52,8 +55,9 @@
           response (handler req-orig)]
       (print-res-status response)
       (print-req-method request (:status response))
+      (print-req-path request)
       (print-body req-body)
-      (print ":: ")
+      (print (bold-yellow ":: "))
       (print-body (:body response))
       (println)
 
