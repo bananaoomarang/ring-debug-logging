@@ -8,6 +8,8 @@
       (clojure.string/upper-case)))
 
 (defn- get-req-body! [{:keys [body] :as request}]
+  (println "get req body")
+  (println request)
   (if (nil? body) "" (slurp body)))
 
 (defn- refill-req-with-body [request body-str]
@@ -40,10 +42,13 @@
   (print (bold-cyan uri) ""))
 
 (defn- print-body [body]
-  (print
-   (if (empty? body)
-     (cyan "[no body]")
-     (bold-white body)) ""))
+  (if (string? body)
+    (print
+     (if (empty? body)
+       (cyan "[no body]")
+       (bold-white body)) "")
+
+    (print (bold-white (type body)))))
 
 (defn wrap-with-logger [handler]
   (fn [request]
