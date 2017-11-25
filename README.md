@@ -2,7 +2,7 @@
 
 A clojure library for quick and dirty Ring server logging, intended for development.
 
-![Clojars Project](ring-logger-demo.png)
+![Clojars Project](ring-logger-demo.gif)
 
 ## Usage
 
