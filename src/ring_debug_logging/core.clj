@@ -8,7 +8,7 @@
       (clojure.string/upper-case)))
 
 (defn- get-req-body! [{:keys [body] :as request}]
-  (if body (slurp body) ""))
+  (nil? body "" (slurp body)))
 
 (defn- refill-req-with-body [request body-str]
   (assoc request :body (java.io.ByteArrayInputStream. (.getBytes body-str))))
