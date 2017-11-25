@@ -1,4 +1,4 @@
-(defproject bananaoomarang/ring-debug-logging "1.0.4"
+(defproject bananaoomarang/ring-debug-logging "1.0.5"
   :description "Quick and dirty request/response debugging middleware for Ring"
   :url "https://github.com/bananaoomarang/ring-debug-logging"
   :license {:name "MIT License"
